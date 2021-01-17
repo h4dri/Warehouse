@@ -1,4 +1,5 @@
 using Application.Products;
+using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistence;
+using Microsoft.AspNetCore.Identity;
 
 // Jest to plik konfiguracji - tworzony przy komendzie "dotnet new webapi -n API"
 
@@ -30,6 +32,12 @@ namespace API
             }); //mówimy programowi ze bedziemy uzywac serwisu DBcontext, który bedzie typu DataContext
             services.AddControllers();
             services.AddMediatR(typeof(List.Handler).Assembly); // skorzystaj z serwisu MediatR
+            var builder = services.AddIdentityCore<AppUser>();
+            var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+            identityBuilder.AddEntityFrameworkStores<DataContext>();
+            identityBuilder.AddSignInManager<SignInManager<AppUser>>();
+
+            services.AddAuthentication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

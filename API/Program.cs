@@ -1,5 +1,7 @@
 using System;
+using Domain;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,8 +24,9 @@ namespace API
                 try
                 {
                     var context = services.GetRequiredService<DataContext>();
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
                     context.Database.Migrate(); // tworzy baze denych jezeli nie istnieje
-                    Seed.SeedData(context); // dodanie poczatkowych wartosci do bazy danych
+                    Seed.SeedData(context, userManager).Wait(); // dodanie poczatkowych wartosci do bazy danych
                 }
                 catch(Exception ex)
                 {
