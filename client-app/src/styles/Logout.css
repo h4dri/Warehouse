@@ -1,0 +1,21 @@
+#logout{
+    width: calc(100% - 100px);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#logout h1{
+    width: 390px;
+    height: 90px;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 200px);
+    border-radius: 20px;
+    padding: 5px;
+    background: linear-gradient(#ededed, #9198e5);
+    margin: 0;
+    line-height: 90px;
+    text-align: center;
+}

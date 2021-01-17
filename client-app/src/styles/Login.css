@@ -1,0 +1,73 @@
+#login{
+    width: 498px;
+    height: 498px;
+    position: absolute;
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+    border-radius: 20px;
+    box-shadow: 0 0 5px #323232;
+}
+
+#login a:active{
+    text-decoration: none;
+}
+
+#login #loginContent{
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border-radius: 20px;
+    padding: 5px;
+    background: linear-gradient(#ededed, #9198e5);
+}
+
+#login #loginContent h1{
+    margin-top: 50px;
+    text-align: center;
+}
+
+#login #loginContent .loginElement{
+    width: 100%;
+}
+
+#login #loginContent .loginElement p{
+    font-size: 20px;
+    text-align: center;
+    margin: 5px;
+    padding: 0;
+}
+
+#login #loginContent .loginElement input{
+    width: calc(100% - 50px);
+    box-sizing: border-box;
+    margin: 10px 25px;
+    padding: 5px;
+    font-size: 16px;
+    border: 0;
+    border-bottom: 1px solid #323232;
+    background-color: #32323200;
+}
+
+#login #loginContent #loginButton input{
+    width: 120px;
+    display: block;
+    box-sizing: border-box;
+    margin: 10px auto;
+    padding: 10px 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #62425f;
+    background-color: #62425f;
+    box-shadow: 0 0 2px #62425f;
+    color: #ededed;
+}
+
+#login #loginContent #loginButton input:disabled{
+    opacity: 0.5;
+}
+
+#login #loginContent #registerText{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 20px 30px;
+}

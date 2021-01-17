@@ -30,6 +30,13 @@ namespace API
             {
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection")); // korzysta z Sqlite i łączy się do niego przez connection stringa którego pobiera za pomoca GetConnectionString("DefaultConnection") // default connection jest w appsettings.json w API 
             }); //mówimy programowi ze bedziemy uzywac serwisu DBcontext, który bedzie typu DataContext
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000").AllowCredentials();
+                });
+            });
             services.AddControllers();
             services.AddMediatR(typeof(List.Handler).Assembly); // skorzystaj z serwisu MediatR
             var builder = services.AddIdentityCore<AppUser>();
@@ -53,6 +60,7 @@ namespace API
             
             // ta linijka mowi o tym ze nasza aplikacja uzywa routing
             app.UseRouting();
+            app.UseCors("CorsPolicy");
             
             // ta linijka mowi o tym ze nasza aplikacja uzywa autoryzacji       
             app.UseAuthorization();
