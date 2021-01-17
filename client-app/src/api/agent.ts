@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { IProduct } from '../models/ProductsModel';
+import { INewProduct, IProduct, IUpdateProduct } from '../models/ProductsModel';
+import { IUser, IUserFromValues } from '../models/UserModel';
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -36,11 +37,22 @@ const requests = {
     del: (url: string) => axios.delete(url).then(sleep(200)).then(responseBody)
 }
 
+const User = {
+    current: (): Promise<IUser> => requests.get('/user'),
+    login: (user: IUserFromValues): Promise<IUser> => requests.post('/user/login', user),
+    register: (user: IUserFromValues): Promise<IUser> => requests.post('/user/register', user)
+}
+
 const Products = {
     list: (): Promise<IProduct[]> => requests.get('/products'),
+    details: (id: string) => requests.get(`/products/${id}`),
+    create: (product: INewProduct) => requests.post('/products', product),
+    update: (product: IUpdateProduct) => requests.put(`/products/${product.id}`, product),
+    delete: (id: string) => requests.del(`/products/${id}`)
 }
 
 
 export default {
-    Products
+    Products,
+    User
 }

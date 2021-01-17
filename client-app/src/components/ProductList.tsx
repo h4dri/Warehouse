@@ -3,10 +3,9 @@ import { RootStoreContext } from '../stores/RootStore';
 import '../styles/CustomerPanel.css';
 import HBHeader from './HBHeader';
 
-function CustomerPanel() {
+function ProductList() {
     const rootStore = useContext(RootStoreContext)
 
-    const [displayName, setDisplayName] = useState("Daniel Emerle");
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -19,7 +18,7 @@ function CustomerPanel() {
     return (
         <>
             <div id="customerPanel">
-                <h2>Witaj ponownie {displayName}!</h2>
+                <h1>Lista produktów dostępnych w hurtowni (Jeżeli chcesz coś kupić to się zaloguj!):</h1>
                 {
                     isLoading ? (
                         <p>Ładowanie...</p>
@@ -36,4 +35,4 @@ function CustomerPanel() {
     );
 }
 
-export default CustomerPanel;
+export default ProductList;

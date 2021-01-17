@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import HBHeader from '../components/HBHeader';
 import '../styles/Register.css';
 
 function Register() {
@@ -54,7 +55,7 @@ function Register() {
                     </div>
                     <div className="registerElement">
                         <p>Hasło:</p>
-                        <input type="email" value={password} onChange={handlePasswordChange}/>
+                        <input type="password" value={password} onChange={handlePasswordChange}/>
                     </div>
                     <div id="registerButton">
                     <input type="submit" value="Zarejestruj" disabled={isDisabled} onClick={handleregisterButton}/>

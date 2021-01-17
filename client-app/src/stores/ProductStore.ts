@@ -1,6 +1,6 @@
 import { action, observable, runInAction } from "mobx";
 import agent from "../api/agent";
-import { IProduct } from "../models/ProductsModel";
+import { INewProduct, IProduct, IUpdateProduct } from "../models/ProductsModel";
 import { RooteStore } from "./RootStore";
 
 export default class ProductStore {
@@ -23,6 +23,30 @@ export default class ProductStore {
         } catch (error) {
             console.log(error);
             this.isLoading = false;
+        }
+    }
+
+    @action deleteProduct = async (id: string) => {
+        try{
+            await agent.Products.delete(id);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    @action createProduct = async (value: INewProduct) => {
+        try{
+            await agent.Products.create(value);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    @action updateProduct = async (value: IUpdateProduct) => {
+        try{
+            await agent.Products.update(value)
+        } catch (error) {
+            console.log(error)
         }
     }
 }

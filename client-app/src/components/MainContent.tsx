@@ -5,6 +5,7 @@ import CustomerPanel from './CustomerPanel';
 import Header from './Header';
 import Login from './Login';
 import Logout from './Logout';
+import ProductList from './ProductList';
 import Register from './Register';
 
 function MainContent() {
@@ -21,6 +22,9 @@ function MainContent() {
                     </Route>
                     <Route path="/customerPanel">
                         <CustomerPanel />
+                    </Route>
+                    <Route path="/productsList">
+                        <ProductList />
                     </Route>
                     <Route path="/">
                         <Login />
