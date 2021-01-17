@@ -16,14 +16,14 @@ namespace Persistence
                     {
                         new AppUser
                         {
-                            DisplaName = "Emerle",
+                            DisplayName = "Emerle",
                             UserName = "eme",
                             Email = "eme@hb.com",
                             isAdmin = true,
                         },
                         new AppUser
                         {
-                            DisplaName = "Barczak",
+                            DisplayName = "Barczak",
                             UserName = "bar",
                             Email = "bob@hb.com",
                             isAdmin = false,

@@ -3,7 +3,7 @@ namespace Domain
 {
     public class AppUser : IdentityUser
     {
-        public string DisplaName {get; set;}
+        public string DisplayName {get; set;}
         public bool isAdmin { get; set; }
     }
 }
