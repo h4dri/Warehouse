@@ -9,6 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistence;
 using Microsoft.AspNetCore.Identity;
+using Application.Interfaces;
+using Infrastructure.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Authorization;
+using System.Text;
 
 // Jest to plik konfiguracji - tworzony przy komendzie "dotnet new webapi -n API"
 
@@ -43,6 +50,31 @@ namespace API
             var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
             identityBuilder.AddEntityFrameworkStores<DataContext>();
             identityBuilder.AddSignInManager<SignInManager<AppUser>>();
+            // services.AddAuthorization(opt =>
+            // {
+            //     opt.AddPolicy("IsActivityHost", policy =>
+            //     {
+            //         policy.Requirements.Add(new IsHostRequirement());
+            //     });
+            // });
+
+            //services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"]));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opt =>
+                {
+                    opt.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = key,
+                        ValidateAudience = false,
+                        ValidateIssuer = false
+                    };
+                });
+            services.AddScoped<IJwtGenerator, JwtGenerator>();
 
             services.AddAuthentication();
         }
@@ -62,7 +94,8 @@ namespace API
             app.UseRouting();
             app.UseCors("CorsPolicy");
             
-            // ta linijka mowi o tym ze nasza aplikacja uzywa autoryzacji       
+            // ta linijka mowi o tym ze nasza aplikacja uzywa autoryzacji   
+            app.UseAuthentication();    
             app.UseAuthorization();
 
             //ta to coś mowi o endpointach

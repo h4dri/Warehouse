@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Application.Products;
 using Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -38,6 +39,7 @@ namespace API.Controllers
 
         // POST api/values // stwórz produkt
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Unit>> Create(Create.Command command)
         {
             return await _mediator.Send(command);
@@ -45,6 +47,7 @@ namespace API.Controllers
 
         // PUT api/values/5 // edytuj produkt po ID
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult<Unit>> Edit (Guid id, Edit.Command command)
         {
             command.Id = id;
@@ -53,6 +56,7 @@ namespace API.Controllers
 
         // DELETE api/values/5  // usun produkt po Id
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<Unit>> Delete(Guid id)
         {
             return await _mediator.Send(new Delete.Command{Id = id});
