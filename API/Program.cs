@@ -23,6 +23,7 @@ namespace API
                 {
                     var context = services.GetRequiredService<DataContext>();
                     context.Database.Migrate(); // tworzy baze denych jezeli nie istnieje
+                    Seed.SeedData(context); // dodanie poczatkowych wartosci do bazy danych
                 }
                 catch(Exception ex)
                 {

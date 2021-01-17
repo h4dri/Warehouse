@@ -1,3 +1,5 @@
+using Application.Products;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +29,7 @@ namespace API
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection")); // korzysta z Sqlite i łączy się do niego przez connection stringa którego pobiera za pomoca GetConnectionString("DefaultConnection") // default connection jest w appsettings.json w API 
             }); //mówimy programowi ze bedziemy uzywac serwisu DBcontext, który bedzie typu DataContext
             services.AddControllers();
+            services.AddMediatR(typeof(List.Handler).Assembly); // skorzystaj z serwisu MediatR
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

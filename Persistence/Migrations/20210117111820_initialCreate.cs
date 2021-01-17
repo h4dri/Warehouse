@@ -1,17 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder) // co jest dodawane do bazy danych
+        protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable( // tworzenie tabelu
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true), //id jest autoinkrementacyjne
+                    Id = table.Column<Guid>(nullable: false),
                     ProductName = table.Column<string>(nullable: true),
                     PriceEa = table.Column<int>(nullable: false),
                     NumberOfProducts = table.Column<int>(nullable: false)
@@ -22,7 +22,7 @@ namespace Persistence.Migrations
                 });
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder) // co jest usuwane z bazy danych
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Products");
