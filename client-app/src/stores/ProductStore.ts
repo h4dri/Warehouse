@@ -10,6 +10,7 @@ export default class ProductStore {
     }
     
     @observable products: IProduct[] = [];
+    @observable actualProduct: IProduct | null = null;
     @observable isLoading = false;
 
     @action loadProducts = async () => {
@@ -45,6 +46,14 @@ export default class ProductStore {
     @action updateProduct = async (value: IUpdateProduct) => {
         try{
             await agent.Products.update(value)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    @action getProduct = async (id: string) => {
+        try{
+            this.actualProduct = await agent.Products.details(id)
         } catch (error) {
             console.log(error)
         }

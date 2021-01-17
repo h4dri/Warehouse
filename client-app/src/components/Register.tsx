@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import HBHeader from '../components/HBHeader';
+import { IUserFromValues } from '../models/UserModel';
+import { RootStoreContext } from '../stores/RootStore';
 import '../styles/Register.css';
 
 function Register() {
-
+    const rootStore = useContext(RootStoreContext)
+    
     const [login, setLogin] = useState("");
     const [displayName, setDisplayName] = useState("");
     const [email, setEmail] = useState("");
@@ -28,7 +30,17 @@ function Register() {
     }
 
     function handleregisterButton(){
-        window.open("/customerPanel", "_self");
+        const values: IUserFromValues = {
+            displayName: displayName,
+            userName: login,
+            isAdmin: false,
+            password: password,
+            email: email
+        }
+
+        console.log(values)
+        
+        rootStore.userStore.registerUser(values)
     }
 
     function validate(){

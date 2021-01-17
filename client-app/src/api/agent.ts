@@ -45,7 +45,7 @@ const User = {
 
 const Products = {
     list: (): Promise<IProduct[]> => requests.get('/products'),
-    details: (id: string) => requests.get(`/products/${id}`),
+    details: (id: string): Promise<IProduct> => requests.get(`/products/${id}`),
     create: (product: INewProduct) => requests.post('/products', product),
     update: (product: IUpdateProduct) => requests.put(`/products/${product.id}`, product),
     delete: (id: string) => requests.del(`/products/${id}`)
