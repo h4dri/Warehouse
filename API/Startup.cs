@@ -59,6 +59,7 @@ namespace API
             // });
 
             //services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
+            services.AddScoped<IUserAccessor, UserAccessor>();
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"]));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
