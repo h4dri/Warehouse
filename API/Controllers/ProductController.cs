@@ -11,33 +11,30 @@ using Persistence;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")] // <---- info o ściezce dostepu do zapytań
-    [ApiController] // <--- info dla systemy ze jest to kontroller api
+    [Route("api/[controller]")] 
+    [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly DataContext _context; //inicjuj obiekt bazy danych
-        private readonly IMediator _mediator; //inicjuj obiekt mediatora
-        public ProductsController(DataContext context, IMediator mediator) // <---- Controller bedzie uzywał bazy danych o nazwie obiektu "context", Mediator - używaj mediatora
+        private readonly DataContext _context; 
+        private readonly IMediator _mediator;
+        public ProductsController(DataContext context, IMediator mediator) 
         {
-            _mediator = mediator; // korzystaj z mediatora
-            _context = context;  // <--- obiekt "_context" przypisz jako "context" z zewnątrz czyli bazę danych
+            _mediator = mediator;
+            _context = context;
         }
 
-        // GET api/values // wyświetl produkty
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> List() // tworzony jest osobny task zeby mozna bylo wysylac asynchronicznie zeby nie obciazac bazy danych
+        public async Task<ActionResult<List<Product>>> List() 
         {
             return await _mediator.Send(new List.Query());
         }
 
-        //GET api/values/5 // wyświetl produkt po ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> Details(Guid id)
         {
             return await _mediator.Send(new Details.Query{Id = id});
         }
 
-        // POST api/values // stwórz produkt
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Unit>> Create(Create.Command command)
@@ -45,7 +42,6 @@ namespace API.Controllers
             return await _mediator.Send(command);
         }
 
-        // PUT api/values/5 // edytuj produkt po ID
         [HttpPut("{id}")]
         [Authorize]
         public async Task<ActionResult<Unit>> Edit (Guid id, Edit.Command command)
@@ -54,7 +50,6 @@ namespace API.Controllers
             return await _mediator.Send(command);
         }
 
-        // DELETE api/values/5  // usun produkt po Id
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<ActionResult<Unit>> Delete(Guid id)
