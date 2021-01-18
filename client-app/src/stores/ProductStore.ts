@@ -9,13 +9,42 @@ export default class ProductStore {
         this.rootStore = rootStore;
     }
     
+    @observable cashProducts: IProduct[] = [];
     @observable products: IProduct[] = [];
     @observable actualProduct: IProduct | null = null;
     @observable isLoading = false;
 
+    @action addProductToCash(value: IProduct){
+        this.cashProducts.push(value);
+        console.log("Dodano przedmiot do koszyka:")
+        console.log(value)
+        console.log("Produktów w koszyku")
+        console.log(this.cashProducts)
+    }
+
+    @action buyProducts(){
+        this.cashProducts.forEach((item, index) => {
+            this.getProduct(item.id)
+                .then(() => {
+                    if(this.actualProduct){
+                        var max = this.actualProduct.numberOfProducts
+                        item.numberOfProducts = max - item.numberOfProducts
+                        this.updateProduct(item)
+                            .then(() => {
+                                if(index === this.cashProducts.length - 1){
+                                    this.cashProducts = []
+                                    window.open("/customerPanel", "_self")
+                                }
+                            })
+                    }
+                })
+        })
+    }
+
     @action loadProducts = async () => {
         this.isLoading = true;
         try{
+            this.products = [];
             const products = await agent.Products.list()
             products.forEach(product => {
                 this.products.push(product)

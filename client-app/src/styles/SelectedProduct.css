@@ -1,0 +1,123 @@
+#selectedProductContent{
+    position: absolute;
+    left: calc(50% - 200px);
+    width: 350px;
+    height: 500px;
+    border-radius: 10px;
+    padding: 15px 40px;
+    background: #F6F7EB;
+    border: 1px solid #463730;
+    color: #463730;
+    margin: 5px 0 0 0;
+    box-shadow: 1px 1px 5px #ccc;
+}
+
+#selectedProductContent h3{
+    text-align: center;
+}
+
+#selectedProductContent h4{
+    margin: 5px 0;
+    padding: 0;
+}
+
+#selectedProductContent p{
+    margin: 5px 0;
+    padding: 0;
+}
+
+#selectedProductContent #toAddToCash{
+    width: calc(100% - 80px);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px 40px;
+}
+
+#selectedProductContent #toAddToCash input{
+    width: 30%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 0 1px #463730;
+}
+
+#selectedProductContent #toAddToCash input:focus{
+    outline: none;
+}
+
+#selectedProductContent #toAddToCash button{
+    width: 170px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    float: right;
+    border-radius: 10px;
+    box-shadow: 0 0 1px #463730;
+}
+
+#selectedProductContent #toAddToCash button:focus{
+    outline: none;
+}
+
+#selectedProductContent #toAddToCash button img{
+    width: 30px;
+    height: 30px;
+    margin: 10px 5px;
+    padding: 0;
+    display: block;
+    float: left;
+}
+
+#selectedProductContent #toAddToCash button p{
+    height: 30px;
+    width: 110px;
+    line-height: 30px;
+    margin: 10px 5px;
+    padding: 0;
+    display: block;
+    float: left;
+}
+
+#cashView{
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    background: linear-gradient(#1f5673 50%, #759fbc 150%);;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0px 10px 20px #565656;
+    color: #f8f8f8;
+    
+}
+
+#cashView img{
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    padding: 0;
+    margin: 0;
+}
+
+#cashView p{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(100% - 50px);
+    left: calc(100% - 50px);
+    border-radius: 50%;
+    background: #FF0000;
+    text-align: center;
+    box-shadow: 0px 10px 20px #565656;
+}

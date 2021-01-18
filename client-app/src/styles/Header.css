@@ -1,14 +1,16 @@
 #header{
     display: block;
     width: 80px;
-    height: 100vh;
+    height: 95vh;
     margin: 0;
-    background: linear-gradient(#500202, #9198e5);
+    background: linear-gradient(#1f5673, #759fbc);
     overflow: hidden;
     box-shadow: 0px 10px 20px #565656;
     position: absolute;
-    top: 0;
+    top: 2.5vh;
     left: 0;
+    border-radius: 0 20px 20px 0;
+    z-index: 100;
 }
 
 #header #homeImg{
@@ -21,7 +23,7 @@
 }
 
 #header #homeImg:hover{
-    background: #9198e5;
+    background: #FFEEDD;
 }
 
 #header #homeImg img{
@@ -43,7 +45,7 @@
 }
 
 #header #logOutImg:hover{
-    background: #970404ab;
+    background: #FFEEDD;
 }
 
 #header #logOutImg img{

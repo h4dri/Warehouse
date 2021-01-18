@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { IProduct } from '../models/ProductsModel';
-import '../styles/OneProduct.css';
+import '../styles/CashProducts.css';
 
-function OneProduct(props: {item: IProduct}) {
+function CashProducts(props: {item: IProduct}) {
 
     return (
         <>
-            <ul className="oneListElement">
+            <ul className="oneCashListElement">
                 <li>{props.item.productName}</li>
                 <li>{props.item.numberOfProducts} szt</li>
                 <li>{props.item.priceEa} zł</li>
@@ -15,4 +15,4 @@ function OneProduct(props: {item: IProduct}) {
     );
 }
 
-export default OneProduct;
+export default CashProducts;

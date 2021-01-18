@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { RootStoreContext } from '../stores/RootStore';
 import '../styles/CustomerPanel.css';
-import HBHeader from './HBHeader';
 
 function ProductList() {
     const rootStore = useContext(RootStoreContext)

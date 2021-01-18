@@ -11,14 +11,15 @@ function CustomerPanel() {
     const [displayName, setDisplayName] = useState("Daniel Emerle");
     const [isLoading, setIsLoading] = useState(true)
     const [actualProduct, setActualProduct] = useState(rootStore.productStore.actualProduct)
+    const [isVisible, setIsVisible] = useState("none");
 
-    // useEffect(() => {
-    //     rootStore.userStore.getCurrentUser()
-    //         .then(() => {
-    //             if(rootStore.userStore.user)
-    //                 setDisplayName(rootStore.userStore.user.displayName)
-    //         })
-    // }, [])
+    useEffect(() => {
+        rootStore.userStore.getCurrentUser()
+            .then(() => {
+                if(rootStore.userStore.user)
+                    setDisplayName(rootStore.userStore.user.displayName)
+            })
+    }, [])
 
     useEffect(() => {
         rootStore.productStore.loadProducts()
@@ -64,6 +65,11 @@ function CustomerPanel() {
                     {
                         actualProduct ? <SelectedProduct item={actualProduct} /> : null
                     }
+                </div>
+                <div id="smart-button-container" style={{ display: isVisible }}>
+                    <div style={{ textAlign: "center" }}>
+                        <div id="paypal-button-container"></div>
+                    </div>
                 </div>
             </div>
         </>

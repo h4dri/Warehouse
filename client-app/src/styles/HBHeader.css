@@ -1,14 +1,16 @@
 #hBHeader{
-    width: calc(100%);
+    width: 800px;
     margin: 0;
     padding: 0;
     position: absolute;
     top: 0;
-    right: 0;
+    right: calc(50% - 400px);
     overflow: hidden;
-    background: linear-gradient(90deg, #500202, #9198e5);
-    color: #ededed;
+    background: linear-gradient(#1f5673 50%, #759fbc 150%);
+    color: #f8f8f8;
     box-shadow: 0px 10px 20px #565656;
+    border-radius: 0 0 20px 20px;
+    z-index: 100;
 }
 
 #hBHeader h1{

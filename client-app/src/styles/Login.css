@@ -5,7 +5,7 @@
     top: calc(50% - 250px);
     left: calc(50% - 250px);
     border-radius: 20px;
-    box-shadow: 0 0 5px #323232;
+    box-shadow: 0px 10px 20px #565656;
 }
 
 #login a:active{
@@ -17,7 +17,8 @@
     height: calc(100% - 10px);
     border-radius: 20px;
     padding: 5px;
-    background: linear-gradient(#ededed, #9198e5);
+    background: linear-gradient(#1f5673 -10%, #759fbc 70%);
+    color: #f8f8f8;
 }
 
 #login #loginContent h1{
@@ -43,8 +44,9 @@
     padding: 5px;
     font-size: 16px;
     border: 0;
-    border-bottom: 1px solid #323232;
+    border-bottom: 1px solid #463730;
     background-color: #32323200;
+    color: #f8f8f8;
 }
 
 #login #loginContent #loginButton input{
@@ -55,9 +57,9 @@
     padding: 10px 5px;
     font-size: 16px;
     border-radius: 5px;
-    border: 1px solid #62425f;
-    background-color: #62425f;
-    box-shadow: 0 0 2px #62425f;
+    border: 1px solid #463730;
+    background-color: #463730;
+    box-shadow: 0 0 2px #463730;
     color: #ededed;
 }
 
