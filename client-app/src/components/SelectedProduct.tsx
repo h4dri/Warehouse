@@ -6,7 +6,7 @@ import cashIMG from '../resources/cash.png'
 import { RootStoreContext } from '../stores/RootStore';
 import Cash from './Cash';
 
-function SelectedProduct(props: { item: IProduct }) {
+function SelectedProduct(props: { item: IProduct, showHide: any }) {
     const rootStore = useContext(RootStoreContext)
     
     const [selectedNumber, setSelectedNumber] = useState("1");
@@ -41,16 +41,21 @@ function SelectedProduct(props: { item: IProduct }) {
 
     function handleCashButton(){
         setIsCashOpen(true)
+        props.showHide()
     }
 
     function closeCash(){
         setIsCashOpen(false)
+        props.showHide()
     }
 
     function buyProducts(){
-        setIsCashOpen(false)
         rootStore.productStore.buyProducts()
-        setNumberOfProducts(0)
+            .then(() => {
+                setIsCashOpen(false)
+                setNumberOfProducts(0)
+                props.showHide()
+            })
     }
 
     return (
@@ -78,7 +83,7 @@ function SelectedProduct(props: { item: IProduct }) {
             </div>
             {
                 isCashOpen ? (
-                    <Cash close={closeCash} buy={buyProducts} isOpen={isCashOpen} />
+                    <Cash close={closeCash} buy={buyProducts} isOpen={isCashOpen}/>
                 ) : (
                     null
                 )

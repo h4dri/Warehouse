@@ -15,8 +15,14 @@ function Login() {
     useEffect(() => {
         const token = window.localStorage.getItem('jwt');
         console.log(token)
-        token === "null" ? console.log("logowanie") : window.open("/customerPanel", "_self")
-    }, []);
+        if(token === "null")
+        {
+            console.log("logowanie") 
+        } else {
+            if(rootStore.userStore.user?.isAdmin) window.open("/adminPanel", "_self")
+            else window.open("/customerPanel", "_self")
+        }
+    }, [])
 
     function handleLoginChange(event: React.ChangeEvent<HTMLInputElement>){
         setLogin(event.target.value);

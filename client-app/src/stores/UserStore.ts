@@ -20,7 +20,7 @@ export default class UserStore{
                 this.user = user;
             })
             this.rootStore.commonStore.setToken(user.token)
-            window.open("/customerPanel", "_self")
+            user.isAdmin ? window.open("/adminPanel", "_self") : window.open("/customerPanel", "_self")
         } catch (error) {
             console.log(error)
             throw error;

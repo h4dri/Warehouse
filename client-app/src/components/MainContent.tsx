@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import '../styles/MainContent.css';
+import AdminPanel from './AdminPanel';
 import CustomerPanel from './CustomerPanel';
 import Header from './Header';
 import Login from './Login';
@@ -22,6 +23,9 @@ function MainContent() {
                     </Route>
                     <Route path="/customerPanel">
                         <CustomerPanel />
+                    </Route>
+                    <Route path="/adminPanel">
+                        <AdminPanel />
                     </Route>
                     <Route path="/productsList">
                         <ProductList />

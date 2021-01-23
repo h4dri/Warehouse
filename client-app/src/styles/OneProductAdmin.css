@@ -1,0 +1,50 @@
+.oneListElementAdmin .bigEl{
+    width: calc(33% - 32px);
+    height: 38px;
+    line-height: 38px;
+    display: block;
+    float: left;
+}
+
+.oneListElementAdmin .bigEl input{
+    width: calc(100% - 100px);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 0 1px #463730;
+}
+
+.oneListElementAdmin .bigEl input:focus{
+    outline: none;
+}
+
+.oneListElementAdmin .smallEl{
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    float: left;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 1px solid #8d0404;
+    box-shadow: 1px 1px 5px #323232;
+    cursor: pointer;
+}
+
+.oneListElementAdmin .smallEl:hover{
+    border: 1px solid #ededed;
+}
+
+.oneListElementAdmin .edit{
+    background: #00ce00;
+}
+
+.oneListElementAdmin .trash{
+    background: #db0000;
+}
+
+.oneListElementAdmin .smallEl img{
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+}

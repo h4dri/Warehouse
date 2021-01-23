@@ -1,4 +1,4 @@
-#customerPanel{
+#adminPanel{
     width: calc(100% - 100px);
     height: calc(100vh - 70px);
     padding: 10px;
@@ -8,18 +8,18 @@
     overflow: hidden;
 }
 
-#customerPanel #customerDisplayName{
+#adminPanel #customerDisplayName{
     width: 100%;
     height: 50px;
     line-height: 50px;
 }
 
-#customerPanel #customerDisplayName h2{
+#adminPanel #customerDisplayName h2{
     margin: 0;
     padding: 0;
 }
 
-#customerPanel #productsList{
+#adminPanel #productsList{
     width: calc(50% - 10px);
     padding: 5px;
     height: calc(100% - 60px);
@@ -27,28 +27,28 @@
     left: 0;
 }
 
-#customerPanel #productsList ul{
+#adminPanel #productsList ul{
     list-style: none;
     padding: 0;
     margin: 0;
     overflow: hidden;
 }
 
-#customerPanel #productsList ul li{
+#adminPanel #productsList > ul > li{
     padding: 0;
     margin: 0;
 }
 
-#customerPanel #productsList ul li ul li{
+#adminPanel #productsList ul li .headers li{
     width: 33%;
     height: 38px;
     line-height: 38px;
     display: block;
     float: left;
-    
+    cursor: default;
 }
 
-#customerPanel #productsList ul li .oneListElement{
+#adminPanel #productsList ul li .oneListElementAdmin{
     width: calc(100% - 32px);
     height: 38px;
     line-height: 38px;
@@ -61,18 +61,10 @@
     box-shadow: 1px 1px 5px #ccc;
 }
 
-#customerPanel #productDetails{
-    width: calc(50% - 11px);
+#adminPanel #newItem{
+    width: calc(50% - 10px);
     padding: 5px;
     height: calc(100% - 60px);
-    border-left: 1px solid #323232;
     position: absolute;
     right: 0;
-}
-
-#customerPanel #smart-button-container{
-    bottom: 50px;
-    right: 50px;
-    position: fixed;
-    width: 500px;
 }

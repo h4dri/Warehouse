@@ -22,7 +22,7 @@ export default class ProductStore {
         console.log(this.cashProducts)
     }
 
-    @action buyProducts(){
+    @action buyProducts = async () => {
         this.cashProducts.forEach((item, index) => {
             this.getProduct(item.id)
                 .then(() => {
